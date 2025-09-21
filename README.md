@@ -1,0 +1,2 @@
+# ImpostorGame
+Juego del impostor
