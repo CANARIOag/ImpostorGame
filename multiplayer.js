@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-import { getDatabase, ref, set, onValue, get } 
+import { getDatabase, ref, set, onValue, get }
   from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js";
 
 // --- CONFIGURACIÓN DE FIREBASE ---
@@ -576,8 +576,7 @@ async function hostearPartida() {
   gameState.jugadorId = 'h' + Math.floor(Math.random() * 10000);
 
   const salaRef = ref(db, 'salas/' + gameState.roomCode);
-  
-  // Guardar la cantidad máxima de jugadores seleccionada por el host
+
   await set(salaRef, {
     host: gameState.jugadorId,
     jugadores: {},
@@ -586,7 +585,6 @@ async function hostearPartida() {
     categorias: gameState.categoriasSeleccionadas
   });
 
-  // Registrar al host como un jugador
   const nombreJugador = playerNameInput.value.trim() || "Anfitrión";
   await set(ref(db, `salas/${gameState.roomCode}/jugadores/${gameState.jugadorId}`), {
     id: gameState.jugadorId,
@@ -597,20 +595,17 @@ async function hostearPartida() {
   mostrarConfig();
   lobbyButtons.style.display = 'none';
   joinSection.style.display = 'none';
+  render();
 
-  // Escuchar por cambios en la sala completa
   onValue(salaRef, snapshot => {
     const salaData = snapshot.val();
     if (!salaData) return;
 
-    // Actualizar la lista de jugadores local
     gameState.jugadores = salaData.jugadores
       ? Object.keys(salaData.jugadores).map(key => ({ ...salaData.jugadores[key], id: key }))
       : [];
-    
-    // Actualizar la cantidad máxima de jugadores en el estado
-    gameState.cantidadJugadores = salaData.cantidadJugadores;
 
+    gameState.cantidadJugadores = salaData.cantidadJugadores;
     gameState.jugadorActual = gameState.jugadores.find(j => j.id === gameState.jugadorId);
 
     renderListaJugadores();
@@ -619,13 +614,11 @@ async function hostearPartida() {
       gameState.juegoFinalizado = false;
       render();
     }
-    // Lógica para reiniciar el juego si el host lo hace
     if (salaData.estado === 'reiniciado') {
       gameState.juegoIniciado = false;
       gameState.juegoFinalizado = false;
       gameState.jugadorActual = null;
       render();
-      // El host, al ser el único que puede iniciar, cambia el estado de nuevo a 'esperando'
       if (gameState.modo === 'host') {
         set(ref(db, `salas/${gameState.roomCode}/estado`), 'esperando');
       }
@@ -639,43 +632,37 @@ async function unirseSala() {
   if (!code) return alert("Ingresá un código de sala válido.");
 
   const salaRef = ref(db, 'salas/' + code);
-  
-  // Obtener los jugadores actuales
   const snapshotSala = await get(salaRef);
   const salaData = snapshotSala.exists() ? snapshotSala.val() : null;
-  
+
   if (!salaData) {
-      alert("La sala no existe.");
-      return;
-  }
-  
-  const jugadoresExistentes = salaData.jugadores || {};
-  const nuevoNumero = Object.keys(jugadoresExistentes).length + 1;
-  const cantidadMaxima = salaData.cantidadJugadores;
-  
-  // Verificar si la sala está llena
-  if (Object.keys(jugadoresExistentes).length >= cantidadMaxima) {
-      alert("La sala está llena. No puedes unirte.");
-      return;
+    alert("La sala no existe.");
+    return;
   }
 
-  // Si se puede unir, actualizamos el estado
+  const jugadoresExistentes = salaData.jugadores || {};
+  const nuevoNumero = Object.keys(jugadoresExistentes).length + 1;
+  const cantidadMaxima = salaData.cantidadJugadores || 3;
+
+  if (Object.keys(jugadoresExistentes).length >= cantidadMaxima) {
+    alert("La sala está llena. No puedes unirte.");
+    return;
+  }
+
   gameState.modo = "join";
   gameState.roomCode = code;
   gameState.jugadorId = 'j' + Math.floor(Math.random() * 10000);
 
-  // Crear nuevo objeto de jugador
   const nombreJugador = playerNameInput.value.trim() || `Jugador ${nuevoNumero}`;
   let jugadorNuevo = { id: gameState.jugadorId, nombre: nombreJugador };
   await set(ref(db, `salas/${gameState.roomCode}/jugadores/${gameState.jugadorId}`), jugadorNuevo);
 
   alert(`Te uniste a la sala: ${gameState.roomCode}`);
 
-  // Ocultar la sección para unirse una vez que se une a la sala
   joinSection.style.display = 'none';
   lobbyButtons.style.display = 'none';
+  render();
 
-  // Escuchar por cambios en los jugadores y el estado de la sala
   onValue(salaRef, snap => {
     const data = snap.val();
     if (!data) return;
@@ -689,12 +676,14 @@ async function unirseSala() {
       gameState.juegoFinalizado = false;
       render();
     }
-     // Lógica para reiniciar el juego si el host lo hace
-     if (data.estado === 'reiniciado') {
+    if (data.estado === 'reiniciado') {
       gameState.juegoIniciado = false;
       gameState.juegoFinalizado = false;
       gameState.jugadorActual = null;
       render();
+      if (gameState.modo === 'host') {
+        set(ref(db, `salas/${gameState.roomCode}/estado`), 'esperando');
+      }
     }
   });
 }
@@ -706,40 +695,83 @@ function onCantidadJugadoresChange() {
   playersInput.value = gameState.cantidadJugadores;
 }
 
-// Generar jugadores (solo el host)
+// --- Nueva lógica para generar jugadores ---
 async function generarJugadoresMultiplayer() {
   if (gameState.modo !== 'host') return;
 
-  const roles = Array(gameState.cantidadImpostores).fill('impostor');
-  while (roles.length < gameState.jugadores.length) roles.push('normal');
+  const numJugadores = gameState.jugadores.length;
+
+  // Lógica de aleatoriedad para modos especiales (1% de probabilidad)
+  const todosImpostores = Math.random() < 0.01;
+  const todosDistintos = !todosImpostores && Math.random() < 0.01;
+
+  // Mapeo para determinar la cantidad de impostores según el número de jugadores
+  const impostoresMap = new Map([
+    [3, 1], [4, 1], [5, 2], [6, 2], [7, 2], [8, 3], [9, 3],
+    [10, 4], [11, 4], [12, 4], [13, 4], [14, 5],
+    [15, 5], [16, 5], [17, 6], [18, 6], [19, 6], [20, 7]
+  ]);
+
+  const numImpostores = impostoresMap.get(numJugadores) || 1;
+
+  let roles = [];
+  if (todosImpostores) {
+    roles = Array(numJugadores).fill('impostor');
+  } else {
+    roles = Array(numImpostores).fill('impostor');
+    while (roles.length < numJugadores) {
+      roles.push('normal');
+    }
+  }
+
   roles.sort(() => Math.random() - 0.5);
 
-  const personajesFiltrados = personajes.filter(p => 
+  const personajesFiltrados = personajes.filter(p =>
     gameState.categoriasSeleccionadas.includes(normalize(p.categoria))
   );
 
-  if (!personajesFiltrados.length) {
-    alert("No hay personajes disponibles en las categorías seleccionadas.");
+  if (personajesFiltrados.length === 0) {
+    alert("No hay personajes disponibles para las categorías seleccionadas.");
     return;
   }
 
-  // Seleccionar un solo personaje para todos los jugadores normales
-  const personajeNormal = personajesFiltrados[Math.floor(Math.random() * personajesFiltrados.length)];
+  let jugadoresAsignados = {};
+  
+  if (todosDistintos) {
+    // Modo "todos distintos"
+    const personajesRandomizados = personajesFiltrados
+      .sort(() => Math.random() - 0.5)
+      .slice(0, numJugadores);
 
-  const jugadoresAsignados = {};
-  gameState.jugadores.forEach((jugador, idx) => {
-    const rol = roles[idx];
-    if (rol === 'impostor') {
-      jugadoresAsignados[jugador.id] = { ...jugador, rol };
-    } else {
-      jugadoresAsignados[jugador.id] = { ...jugador, rol, personaje: personajeNormal };
-    }
-  });
+    gameState.jugadores.forEach((jugador, idx) => {
+      jugadoresAsignados[jugador.id] = {
+        ...jugador,
+        rol: 'normal', // En este modo, todos son normales
+        personaje: personajesRandomizados[idx]
+      };
+    });
+  } else if (todosImpostores) {
+    // Modo "todos impostores"
+    gameState.jugadores.forEach((jugador) => {
+      jugadoresAsignados[jugador.id] = { ...jugador, rol: 'impostor' };
+    });
+  } else {
+    // Modo de juego normal
+    const personajeComun = personajesFiltrados[Math.floor(Math.random() * personajesFiltrados.length)];
+
+    gameState.jugadores.forEach((jugador, idx) => {
+      const rol = roles[idx];
+      if (rol === 'impostor') {
+        jugadoresAsignados[jugador.id] = { ...jugador, rol };
+      } else {
+        jugadoresAsignados[jugador.id] = { ...jugador, rol, personaje: personajeComun };
+      }
+    });
+  }
 
   const jugadoresRef = ref(db, 'salas/' + gameState.roomCode + '/jugadores');
   await set(jugadoresRef, jugadoresAsignados);
 
-  // Actualizar el estado local
   gameState.jugadores = Object.values(jugadoresAsignados);
   gameState.jugadorActual = gameState.jugadores.find(j => j.id === gameState.jugadorId);
 }
@@ -751,23 +783,20 @@ function render() {
     return;
   }
   
-  // Lógica de visualización de tarjetas
   if (!gameState.juegoIniciado) {
-    configCard.style.display = (gameState.modo === 'host') ? 'block' : 'none';
     lobbyCard.style.display = 'block';
+    configCard.style.display = (gameState.modo === 'host') ? 'block' : 'none';
     turnCard.style.display = 'none';
     finalCard.style.display = 'none';
     jugadorInfoElem.style.display = 'none';
-    restartCard.style.display = 'none'; 
-  } else { // El juego está iniciado
+    restartCard.style.display = 'none';
+  } else {
     lobbyCard.style.display = 'none';
     configCard.style.display = 'none';
     turnCard.style.display = 'block';
     finalCard.style.display = 'none';
     jugadorInfoElem.style.display = 'flex';
     renderRol();
-
-    // Mostrar el botón de reinicio solo para el host
     restartCard.style.display = (gameState.modo === 'host') ? 'block' : 'none';
   }
 }
@@ -778,7 +807,7 @@ function renderRol() {
   const titleElement = jugadorInfoElem.querySelector('.rol-title');
 
   const jugador = gameState.jugadorActual;
-  if (!jugador || !jugador.rol) return; // Esperar la asignación de rol
+  if (!jugador || !jugador.rol) return;
 
   if (jugador.rol === 'impostor') {
     imgElement.src = 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Anonymous_emblem.png';
@@ -811,7 +840,6 @@ startButton.addEventListener('click', async () => {
 if (restartButton) {
   restartButton.addEventListener('click', async () => {
     if (gameState.modo === 'host') {
-      // Restablecer el estado de la sala, manteniendo a los jugadores.
       await set(ref(db, 'salas/' + gameState.roomCode + '/estado'), 'reiniciado');
     }
   });
@@ -837,9 +865,11 @@ function updateChipsUI() {
   chips.forEach(chip => {
     const cat = normalize(chip.textContent.trim());
     if (gameState.categoriasSeleccionadas.includes(cat)) {
-      chip.classList.add('secondary'); chip.classList.remove('medium');
+      chip.classList.add('secondary');
+      chip.classList.remove('medium');
     } else {
-      chip.classList.add('medium'); chip.classList.remove('secondary');
+      chip.classList.add('medium');
+      chip.classList.remove('secondary');
     }
   });
 }
@@ -849,3 +879,5 @@ document.addEventListener('DOMContentLoaded', () => {
   updateChipsUI();
   render();
 });
+
+
