@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Impostores</title>
+  <link rel="stylesheet" href="public/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Firebase SDKs -->
+  <script defer src="/__/firebase/12.3.0/firebase-app-compat.js"></script>
+  <script defer src="/__/firebase/12.3.0/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/12.3.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/init.js"></script>
+</head>
+<body>
+  <header class="ion-no-border">
+    <div class="ion-text-center">
+      <h1 class="ion-title">Juego de Impostores</h1>
+    </div>
+  </header>
+
+  <main class="game-background">
+    <div class="centered-container">
+      <!-- Pantalla Configuración -->
+      <div id="config-card" class="game-card fade-in">
+        <div class="card-header">
+          <h2 class="ion-text-center card-title">Configuración del juego</h2>
+        </div>
+        <div class="card-content">
+          <div class="input-group">
+            <label for="cantidad-jugadores">Cantidad de jugadores</label>
+            <input id="cantidad-jugadores" type="number" min="3" value="3">
+          </div>
+          <label class="category-label">Categorías</label>
+          <div class="category-chips">
+            <span class="animated-chip medium">Fútbol</span>
+            <span class="animated-chip medium">Cantantes</span>
+            <span class="animated-chip medium">Históricos</span>
+            <span class="animated-chip medium">Televisión</span>
+            <span class="animated-chip medium">Política</span>
+            <span class="animated-chip medium">Deportes</span>
+            <span class="animated-chip medium">Cine</span>
+            <span class="animated-chip medium">Ciencia</span>
+            <span class="animated-chip medium">Videojuegos</span>
+            <span class="animated-chip medium">Literatura</span>
+            <span class="animated-chip medium">Influencer</span>
+          </div>
+          <button id="start-btn" class="start-button glow-effect">Iniciar Juego</button>
+        </div>
+      </div>
+
+      <!-- Pantalla Turno Jugador -->
+      <div id="turno-card" class="game-card fade-in" style="display: none;">
+        <div class="card-header">
+          <h2 class="ion-text-center card-title">Tu turno</h2>
+        </div>
+        <div class="card-content">
+          <div id="rol-container" class="rol-container" style="display:none;">
+            <img id="personaje-imagen" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Anonymous_emblem.png" alt="ROL" class="personaje-imagen">
+            <h2 id="rol-title" class="rol-title"></h2>
+            <p id="personaje-nombre"></p>
+          </div>
+          <div id="pantalla-separador" class="pantalla-separador animated-pop">
+            <p>Pulsa el botón para ver tu rol</p>
+          </div>
+        </div>
+        <button id="ver-rol-btn" class="action-button">Ver mi rol</button>
+        <button id="siguiente-btn" class="action-button" style="display: none;">Listo, siguiente jugador</button>
+      </div>
+
+      <button id="multiplayer-btn" class="start-button">Jugar Multiplayer</button>
+
+        <script>
+        const mpBtn = document.getElementById('multiplayer-btn');
+        mpBtn.addEventListener('click', () => {
+            window.location.href = 'multiplayer.html';
+        });
+        </script>
+
+      <!-- Pantalla Final -->
+      <div id="final-card" class="game-card fade-in" style="display: none;">
+        <div class="card-header">
+          <h2 class="ion-text-center card-title">Juego Finalizado</h2>
+        </div>
+        <div class="card-content">
+          <p class="final-text">Todos los jugadores han visto su rol.</p>
+          <button id="reiniciar-btn" class="action-button">Reiniciar Juego</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+
+  <!-- Script principal del juego -->
+  <script src="/public/scripts.js"></script>
+
+  <!-- Script opcional para verificar que Firebase carga correctamente -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const app = firebase.app();
+        console.log('Firebase cargado correctamente:', app.name);
+      } catch (err) {
+        console.error('Error al cargar Firebase:', err);
+      }
+    });
+  </script>
+</body>
+</html>

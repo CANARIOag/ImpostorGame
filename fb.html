@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Multiplayer</title>
+  <link rel="stylesheet" href="multiplayer.css">
+
+  <!-- Firebase SDKs -->
+  <script defer src="/__/firebase/12.3.0/firebase-app-compat.js"></script>
+  <script defer src="/__/firebase/12.3.0/firebase-auth-compat.js"></script>
+  <script defer src="/__/firebase/12.3.0/firebase-database-compat.js"></script>
+  <script defer src="/__/firebase/init.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Pantalla de configuración -->
+    <div class="game-card" id="config-card">
+      <h2>Configurar Partida</h2>
+      <label for="cantidad-jugadores">Cantidad de jugadores:</label>
+      <input id="cantidad-jugadores" type="number" min="3" max="20" value="3">
+      
+      <h3>Categorías</h3>
+      <div class="category-chips">
+        <span class="secondary">Futbol</span>
+        <span class="secondary">Influencer</span>
+        <span class="secondary">Cantantes</span>
+        <span class="secondary">Históricos</span>
+        <span class="secondary">Televisión</span>
+        <span class="secondary">Política</span>
+        <span class="secondary">Deportes</span>
+        <span class="secondary">Cine</span>
+        <span class="secondary">Ciencia</span>
+        <span class="secondary">Videojuegos</span>
+        <span class="secondary">Literatura</span>
+      </div>
+      <button id="start-btn" class="start-button">Iniciar Juego</button>
+    </div>
+
+    <!-- Pantalla de turnos -->
+    <div class="game-card" id="turno-card" style="display:none;">
+      <h2>Turno del jugador</h2>
+      <div class="pantalla-separador">
+        <p>Pasa el dispositivo al siguiente jugador</p>
+      </div>
+      <div class="rol-container">
+        <img class="personaje-imagen" src="" alt="Personaje">
+        <h3 class="rol-title"></h3>
+      </div>
+      <button id="ver-rol-btn" class="action-button">Ver mi rol</button>
+      <button id="siguiente-btn" class="action-button" style="display:none;">Siguiente jugador</button>
+    </div>
+
+    <!-- Pantalla final -->
+    <div class="game-card" id="final-card" style="display:none;">
+      <h2>Fin de la partida</h2>
+      <p>Todos los jugadores vieron sus roles.</p>
+      <button id="reiniciar-btn" class="action-button">Reiniciar</button>
+    </div>
+
+  </div>
+
+  <!-- Tu script de multiplayer -->
+  <script src="multiplayer.js"></script>
+
+  <!-- Verificar Firebase -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const app = firebase.app();
+        console.log('Firebase cargado correctamente en multiplayer.html:', app.name);
+      } catch (err) {
+        console.error('Error al cargar Firebase en multiplayer.html:', err);
+      }
+    });
+  </script>
+</body>
+</html>
