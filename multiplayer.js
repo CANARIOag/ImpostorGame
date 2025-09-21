@@ -21,7 +21,7 @@ const gameState = {
   modo: null,
   roomCode: null,
   jugadorId: null,
-  cantidadJugadores: 3,
+  cantidadJugadores: 20,
   cantidadImpostores: 1,
   categoriasSeleccionadas: ['futbol','cantantes','historicos','television','politica','deportes','cine','ciencia','videojuegos','literatura','influencer'],
   jugadores: [],
@@ -50,6 +50,7 @@ const jugadorInfoElem = document.querySelector('.jugador-info');
 const restartCard = document.querySelector('.game-card.restart-card');
 const restartButton = document.querySelector('.restart-card .action-button');
 
+const playerNameInput = document.getElementById('playerName');
 
 // --- PERSONAJES ---
 const personajes = [
@@ -575,7 +576,8 @@ async function hostearPartida() {
   gameState.jugadorId = 'h' + Math.floor(Math.random() * 10000);
 
   const salaRef = ref(db, 'salas/' + gameState.roomCode);
-
+  
+  // Guardar la cantidad máxima de jugadores seleccionada por el host
   await set(salaRef, {
     host: gameState.jugadorId,
     jugadores: {},
@@ -585,9 +587,10 @@ async function hostearPartida() {
   });
 
   // Registrar al host como un jugador
+  const nombreJugador = playerNameInput.value.trim() || "Anfitrión";
   await set(ref(db, `salas/${gameState.roomCode}/jugadores/${gameState.jugadorId}`), {
     id: gameState.jugadorId,
-    nombre: "Jugador 1"
+    nombre: nombreJugador
   });
 
   codigoSalaElems.forEach(el => el.textContent = 'Código de Sala: ' + gameState.roomCode);
@@ -639,7 +642,13 @@ async function unirseSala() {
   
   // Obtener los jugadores actuales
   const snapshotSala = await get(salaRef);
-  const salaData = snapshotSala.exists() ? snapshotSala.val() : {};
+  const salaData = snapshotSala.exists() ? snapshotSala.val() : null;
+  
+  if (!salaData) {
+      alert("La sala no existe.");
+      return;
+  }
+  
   const jugadoresExistentes = salaData.jugadores || {};
   const nuevoNumero = Object.keys(jugadoresExistentes).length + 1;
   const cantidadMaxima = salaData.cantidadJugadores;
@@ -656,7 +665,8 @@ async function unirseSala() {
   gameState.jugadorId = 'j' + Math.floor(Math.random() * 10000);
 
   // Crear nuevo objeto de jugador
-  let jugadorNuevo = { id: gameState.jugadorId, nombre: `Jugador ${nuevoNumero}` };
+  const nombreJugador = playerNameInput.value.trim() || `Jugador ${nuevoNumero}`;
+  let jugadorNuevo = { id: gameState.jugadorId, nombre: nombreJugador };
   await set(ref(db, `salas/${gameState.roomCode}/jugadores/${gameState.jugadorId}`), jugadorNuevo);
 
   alert(`Te uniste a la sala: ${gameState.roomCode}`);
