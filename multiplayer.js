@@ -701,24 +701,29 @@ async function generarJugadoresMultiplayer() {
 
   const numJugadores = gameState.jugadores.length;
 
-  // Lógica de aleatoriedad para modos especiales (1% de probabilidad)
   const todosImpostores = Math.random() < 0.01;
-  const todosDistintos = !todosImpostores && Math.random() < 0.01;
+  const todosDistintos = !todosImpostores && Math.random() < 0.25;
 
-  // Mapeo para determinar la cantidad de impostores según el número de jugadores
-  const impostoresMap = new Map([
-    [3, 1], [4, 1], [5, 2], [6, 2], [7, 2], [8, 3], [9, 3],
-    [10, 4], [11, 4], [12, 4], [13, 4], [14, 5],
-    [15, 5], [16, 5], [17, 6], [18, 6], [19, 6], [20, 7]
+  // Mapeo para determinar el número base de impostores por jugador
+  const impostoresBaseMap = new Map([
+    [3, 1], [4, 1], [5, 1], [6, 1], [7, 2], [8, 2], [9, 2],
+    [10, 2], [11, 3], [12, 3], [13, 3], [14, 3], [15, 4],
+    [16, 4], [17, 4], [18, 5], [19, 5], [20, 5]
   ]);
 
-  const numImpostores = impostoresMap.get(numJugadores) || 1;
+  const numImpostoresBase = impostoresBaseMap.get(numJugadores) || 1;
+  let numImpostoresFinal = numImpostoresBase;
+
+  const probabilidadExtra = (numJugadores - numImpostoresBase) / 77; // Ajuste de probabilidad
+  if (Math.random() < probabilidadExtra) {
+    numImpostoresFinal = numImpostoresBase + 1;
+  }
 
   let roles = [];
   if (todosImpostores) {
     roles = Array(numJugadores).fill('impostor');
   } else {
-    roles = Array(numImpostores).fill('impostor');
+    roles = Array(numImpostoresFinal).fill('impostor');
     while (roles.length < numJugadores) {
       roles.push('normal');
     }
@@ -738,7 +743,6 @@ async function generarJugadoresMultiplayer() {
   let jugadoresAsignados = {};
   
   if (todosDistintos) {
-    // Modo "todos distintos"
     const personajesRandomizados = personajesFiltrados
       .sort(() => Math.random() - 0.5)
       .slice(0, numJugadores);
@@ -746,17 +750,15 @@ async function generarJugadoresMultiplayer() {
     gameState.jugadores.forEach((jugador, idx) => {
       jugadoresAsignados[jugador.id] = {
         ...jugador,
-        rol: 'normal', // En este modo, todos son normales
+        rol: 'normal',
         personaje: personajesRandomizados[idx]
       };
     });
   } else if (todosImpostores) {
-    // Modo "todos impostores"
     gameState.jugadores.forEach((jugador) => {
       jugadoresAsignados[jugador.id] = { ...jugador, rol: 'impostor' };
     });
   } else {
-    // Modo de juego normal
     const personajeComun = personajesFiltrados[Math.floor(Math.random() * personajesFiltrados.length)];
 
     gameState.jugadores.forEach((jugador, idx) => {
@@ -879,5 +881,4 @@ document.addEventListener('DOMContentLoaded', () => {
   updateChipsUI();
   render();
 });
-
 
