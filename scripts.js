@@ -10,104 +10,228 @@ function normalize(str) {
 const personajes = [
     // FUTBOL
     { nombre: 'Lionel Messi', categoria: 'futbol', imagen: '/public/assets/img/Messi.jpg' },
-    { nombre: 'Cristiano Ronaldo', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg' },
-    { nombre: 'Neymar Jr', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Neymar_2018.jpg' },
-    { nombre: 'Kylian Mbappé', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Kylian_Mbapp%C3%A9_2019.jpg' },
-    { nombre: 'Luka Modrić', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Luka_Modri%C4%87_2018.jpg' },
-    { nombre: 'Sergio Ramos', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Sergio_Ramos_2017.jpg' },
-    { nombre: 'Mohamed Salah', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Mohamed_Salah_2018.jpg' },
-    { nombre: 'Robert Lewandowski', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Robert_Lewandowski_2019.jpg' },
-    { nombre: 'Erling Haaland', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/7/71/Erling_Haaland_2022.jpg' },
-    { nombre: 'Karim Benzema', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Karim_Benzema_2021.jpg' },
-    { nombre: 'Kevin De Bruyne', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Kevin_De_Bruyne_2018.jpg' },
-    { nombre: 'Vinícius Júnior', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/62/Vinicius_Junior_Real_Madrid_2021.jpg' },
-    { nombre: 'Jude Bellingham', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Jude_Bellingham_2023.jpg' },
-    { nombre: 'Harry Kane', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/a/ae/Harry_Kane_2018.jpg' },
-    { nombre: 'Antoine Griezmann', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Antoine_Griezmann_2018.jpg' },
-    { nombre: 'Manuel Neuer', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Manuel_Neuer_2019.jpg' },
-    { nombre: 'Virgil van Dijk', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Virgil_van_Dijk_2019.jpg' },
-    { nombre: 'Frenkie de Jong', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Frenkie_de_Jong_2019.jpg' },
-    { nombre: 'Pedri', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Pedri_2021.jpg' },
-    { nombre: 'Gavi', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Gavi_2022.jpg' },
-    { nombre: 'Federico Valverde', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/8/8c/Federico_Valverde_2022.jpg' },
-    { nombre: 'Rúben Dias', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/61/R%C3%BAben_Dias_2021.jpg' },
-    { nombre: 'Phil Foden', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Phil_Foden_2021.jpg' },
-    { nombre: 'Rodrygo', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Rodrygo_2022.jpg' },
-    { nombre: 'Bernardo Silva', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Bernardo_Silva_2019.jpg' },
-    { nombre: 'Joao Félix', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Joao_Felix_2019.jpg' },
-    { nombre: 'Kai Havertz', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Kai_Havertz_2021.jpg' },
-    { nombre: 'Heung-min Son', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/90/Heung-min_Son_2020.jpg' },
-    { nombre: 'Marco Verratti', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/8/80/Marco_Verratti_2017.jpg' },
-    { nombre: 'Casemiro', categoria: 'futbol', imagen: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Casemiro_2018.jpg' },
+    { nombre: 'Cristiano Ronaldo', categoria: 'futbol', imagen: '/public/assets/img/Cristiano_Ronaldo.jpg' },
+    { nombre: 'Neymar Jr', categoria: 'futbol', imagen: '/public/assets/img/Neymar_Jr.jpeg' },
+    { nombre: 'Kylian Mbappé', categoria: 'futbol', imagen: '/public/assets/img/Kylian_Mbappe.png' },
+    { nombre: 'Luka Modrić', categoria: 'futbol', imagen: '/public/assets/img/Luka_Modric.jpg' },
+    { nombre: 'Sergio Ramos', categoria: 'futbol', imagen: '/public/assets/img/Sergio_Ramos.jpg' },
+    { nombre: 'Mohamed Salah', categoria: 'futbol', imagen: '/public/assets/img/Mohamed_Salah.jpg' },
+    { nombre: 'Robert Lewandowski', categoria: 'futbol', imagen: '/public/assets/img/Robert_Lewandowski.jpg' },
+    { nombre: 'Erling Haaland', categoria: 'futbol', imagen: '/public/assets/img/Erling_Haaland.jpg' },
+    { nombre: 'Karim Benzema', categoria: 'futbol', imagen: '/public/assets/img/Karim_Benzema.jpg' },
+    { nombre: 'Kevin De Bruyne', categoria: 'futbol', imagen: '/public/assets/img/Kevin_De_Bruyne.jpg' },
+    { nombre: 'Vinícius Júnior', categoria: 'futbol', imagen: '/public/assets/img/Vinicius_Junior.jpg' },
+    { nombre: 'Jude Bellingham', categoria: 'futbol', imagen: '/public/assets/img/Jude_Bellingham.jpg' },
+    { nombre: 'Harry Kane', categoria: 'futbol', imagen: '/public/assets/img/Harry_Kane.jpeg' },
+    { nombre: 'Antoine Griezmann', categoria: 'futbol', imagen: '/public/assets/img/Antoine_Griezmann.jpg' },
+    { nombre: 'Manuel Neuer', categoria: 'futbol', imagen: '/public/assets/img/Manuel_Neuer.jpg' },
+    { nombre: 'Virgil van Dijk', categoria: 'futbol', imagen: '/public/assets/img/Virgil_van_Dijk.jpg' },
+    { nombre: 'Frenkie de Jong', categoria: 'futbol', imagen: '/public/assets/img/Frenkie_de_Jong.jpg' },
+    { nombre: 'Pedri', categoria: 'futbol', imagen: '/public/assets/img/Pedri.jpeg' },
+    { nombre: 'Gavi', categoria: 'futbol', imagen: '/public/assets/img/Gavi.jpg' },
+    { nombre: 'Federico Valverde', categoria: 'futbol', imagen: '/public/assets/img/Federico_Valverde.jpg' },
+    { nombre: 'Rúben Dias', categoria: 'futbol', imagen: '/public/assets/img/Ruben_Dias.jpg' },
+    { nombre: 'Phil Foden', categoria: 'futbol', imagen: '/public/assets/img/Phil_Foden.jpg' },
+    { nombre: 'Rodrygo', categoria: 'futbol', imagen: '/public/assets/img/Rodrygo.jpg' },
+    { nombre: 'Bernardo Silva', categoria: 'futbol', imagen: '/public/assets/img/Bernardo_Silva.jpg' },
+    { nombre: 'Joao Félix', categoria: 'futbol', imagen: '/public/assets/img/Joao_Felix.jpg' },
+    { nombre: 'Kai Havertz', categoria: 'futbol', imagen: '/public/assets/img/Kai_Havertz.jpg' },
+    { nombre: 'Heung-min Son', categoria: 'futbol', imagen: '/public/assets/img/Heung_min_Son.jpg' },
+    { nombre: 'Marco Verratti', categoria: 'futbol', imagen: '/public/assets/img/Marco_Verratti.jpg' },
+    { nombre: 'Casemiro', categoria: 'futbol', imagen: '/public/assets/img/Casemiro.jpg' },
+    { nombre: 'Pelé', categoria: 'futbol', imagen: '/public/assets/img/Pele.jpg' },
+    { nombre: 'Diego Maradona', categoria: 'futbol', imagen: '/public/assets/img/Diego_Maradona.jpg' },
+    { nombre: 'Johan Cruyff', categoria: 'futbol', imagen: 'Johan_Cruyff.jpg' },
+    { nombre: 'Franz Beckenbauer', categoria: 'futbol', imagen: '/public/assets/img/Franz_Beckenbauer.jpg' },
+    { nombre: 'Alfredo Di Stéfano', categoria: 'futbol', imagen: '/public/assets/img/Alfredo_Di_Stefano.jpg' },
+    { nombre: 'Garrincha', categoria: 'futbol', imagen: '/public/assets/img/Garrincha.jpg' },
+    { nombre: 'Eusébio', categoria: 'futbol', imagen: '/public/assets/img/Eusebio.jpg' },
+    { nombre: 'Bobby Charlton', categoria: 'futbol', imagen: '/public/assets/img/Bobby_Charlton.jpg' },
+    { nombre: 'Zico', categoria: 'futbol', imagen: '/public/assets/img/Zico.jpg' },
+    { nombre: 'Michel Platini', categoria: 'futbol', imagen: 'Michel_Platini.jpg' },
+    { nombre: 'Marco van Basten', categoria: 'futbol', imagen: 'Marco_van_Basten.jpg' },
+    { nombre: 'Ruud Gullit', categoria: 'futbol', imagen: 'Ruud_Gullit.jpg' },
+    { nombre: 'Romário', categoria: 'futbol', imagen: 'Romario.jpg' },
+    { nombre: 'Bebeto', categoria: 'futbol', imagen: 'Bebeto.jpg' },
+    { nombre: 'Paolo Maldini', categoria: 'futbol', imagen: 'Paolo_Maldini.jpg' },
+    { nombre: 'Franco Baresi', categoria: 'futbol', imagen: 'Franco_Baresi.jpg' },
+    { nombre: 'Lothar Matthäus', categoria: 'futbol', imagen: 'Lothar_Matthaus.jpg' },
+    { nombre: 'Roberto Baggio', categoria: 'futbol', imagen: 'Roberto_Baggio.jpg' },
+    { nombre: 'Gabriel Batistuta', categoria: 'futbol', imagen: 'Gabriel_Batistuta.jpg' },
+    { nombre: 'Hristo Stoichkov', categoria: 'futbol', imagen: 'Hristo_Stoichkov.jpg' },
+    { nombre: 'Alan Shearer', categoria: 'futbol', imagen: 'Alan_Shearer.jpg' },
+    { nombre: 'Peter Schmeichel', categoria: 'futbol', imagen: 'Peter_Schmeichel.jpg' },
+    { nombre: 'Zinedine Zidane', categoria: 'futbol', imagen: 'Zinedine_Zidane.jpg' },
+    { nombre: 'Ronaldinho Gaúcho', categoria: 'futbol', imagen: 'Ronaldinho_Gaucho.jpg' },
+    { nombre: 'Ronaldo Nazário', categoria: 'futbol', imagen: 'Ronaldo_Nazario.jpg' },
+    { nombre: 'David Beckham', categoria: 'futbol', imagen: 'David_Beckham.jpg' },
+    { nombre: 'Thierry Henry', categoria: 'futbol', imagen: 'Thierry_Henry.jpg' },
+    { nombre: 'Kaká', categoria: 'futbol', imagen: 'Kaka.jpg' },
+    { nombre: 'Andrea Pirlo', categoria: 'futbol', imagen: 'Andrea_Pirlo.jpg' },
+    { nombre: 'Steven Gerrard', categoria: 'futbol', imagen: 'Steven_Gerrard.jpg' },
+    { nombre: 'Frank Lampard', categoria: 'futbol', imagen: 'Frank_Lampard.jpg' },
+    { nombre: 'Didier Drogba', categoria: 'futbol', imagen: 'Didier_Drogba.jpg' },
+    { nombre: 'Dennis Bergkamp', categoria: 'futbol', imagen: 'Dennis_Bergkamp.jpg' },
+    { nombre: 'Oliver Kahn', categoria: 'futbol', imagen: 'Oliver_Kahn.jpg' },
+    { nombre: 'Iker Casillas', categoria: 'futbol', imagen: 'Iker_Casillas.jpg' },
+    { nombre: 'Gianluigi Buffon', categoria: 'futbol', imagen: 'Gianluigi_Buffon.jpg' },
+    { nombre: 'Ryan Giggs', categoria: 'futbol', imagen: 'Ryan_Giggs.jpg' },
+    { nombre: 'Paul Scholes', categoria: 'futbol', imagen: 'Paul_Scholes.jpg' },
+    { nombre: 'Andriy Shevchenko', categoria: 'futbol', imagen: 'Andriy_Shevchenko.jpg' },
+    { nombre: 'Raúl González', categoria: 'futbol', imagen: 'Raul_Gonzalez.jpg' },
+    { nombre: 'Samuel Eto\'o', categoria: 'futbol', imagen: 'Samuel_Etoo.jpg' },
+    { nombre: 'Xavi Hernández', categoria: 'futbol', imagen: 'Xavi_Hernandez.jpg' },
+    { nombre: 'Andrés Iniesta', categoria: 'futbol', imagen: 'Andres_Iniesta.jpg' },
+    { nombre: 'Carles Puyol', categoria: 'futbol', imagen: 'Carles_Puyol.jpg' },
+    { nombre: 'Gerard Piqué', categoria: 'futbol', imagen: 'Gerard_Pique.jpg' },
+    { nombre: 'David Villa', categoria: 'futbol', imagen: 'David_Villa.jpg' },
+    { nombre: 'Xabi Alonso', categoria: 'futbol', imagen: 'Xabi_Alonso.jpg' },
+    { nombre: 'Gareth Bale', categoria: 'futbol', imagen: 'Gareth_Bale.jpg' },
+    { nombre: 'Zlatan Ibrahimović', categoria: 'futbol', imagen: 'Zlatan_Ibrahimovic.jpg' },
+    { nombre: 'Wayne Rooney', categoria: 'futbol', imagen: 'Wayne_Rooney.jpg' },
+    { nombre: 'Arjen Robben', categoria: 'futbol', imagen: 'Arjen_Robben.jpg' },
+    { nombre: 'Wesley Sneijder', categoria: 'futbol', imagen: 'Wesley_Sneijder.jpg' },
+    { nombre: 'Clarence Seedorf', categoria: 'futbol', imagen: 'Clarence_Seedorf.jpg' },
+    { nombre: 'Philipp Lahm', categoria: 'futbol', imagen: 'Philipp_Lahm.jpg' },
+    { nombre: 'Bastian Schweinsteiger', categoria: 'futbol', imagen: 'Bastian_Schweinsteiger.jpg' },
+    { nombre: 'Miroslav Klose', categoria: 'futbol', imagen: 'Miroslav_Klose.jpg' },
+    { nombre: 'Edinson Cavani', categoria: 'futbol', imagen: 'Edinson_Cavani.jpg' },
+    { nombre: 'Luis Suárez', categoria: 'futbol', imagen: 'Luis_Suarez.jpg' },
+    { nombre: 'Eden Hazard', categoria: 'futbol', imagen: 'Eden_Hazard.jpg' },
+    { nombre: 'Ángel Di María', categoria: 'futbol', imagen: 'Angel_Di_Maria.jpg' },
+    { nombre: 'Sergio Agüero', categoria: 'futbol', imagen: 'Sergio_Aguero.jpg' },
+    { nombre: 'Roberto Carlos', categoria: 'futbol', imagen: 'Roberto_Carlos.jpg' },
+    { nombre: 'Cafu', categoria: 'futbol', imagen: 'Cafu.jpg' },
+    { nombre: 'Lilian Thuram', categoria: 'futbol', imagen: 'Lilian_Thuram.jpg' },
+    { nombre: 'Claude Makélélé', categoria: 'futbol', imagen: 'Claude_Makelele.jpg' },
+    { nombre: 'Patrick Vieira', categoria: 'futbol', imagen: 'Patrick_Vieira.jpg' },
+    { nombre: 'Yaya Touré', categoria: 'futbol', imagen: 'Yaya_Toure.jpg' },
+    { nombre: 'N\'Golo Kanté', categoria: 'futbol', imagen: 'N\'Golo_Kante.jpg' },
+    { nombre: 'Sergio Busquets', categoria: 'futbol', imagen: 'Sergio_Busquets.jpg' },
+    { nombre: 'Thiago Silva', categoria: 'futbol', imagen: 'Thiago_Silva.jpg' },
+    { nombre: 'Kalidou Koulibaly', categoria: 'futbol', imagen: 'Kalidou_Koulibaly.jpg' },
+    { nombre: 'Aymeric Laporte', categoria: 'futbol', imagen: 'Aymeric_Laporte.jpg' },
+    { nombre: 'Jordi Alba', categoria: 'futbol', imagen: 'Jordi_Alba.jpg' },
+    { nombre: 'Marcelo Vieira', categoria: 'futbol', imagen: 'Marcelo_Vieira.jpg' },
+    { nombre: 'David Alaba', categoria: 'futbol', imagen: 'David_Alaba.jpg' },
+    { nombre: 'Raphaël Varane', categoria: 'futbol', imagen: 'Raphael_Varane.jpg' },
 
     // 🎤 Cantantes
-    { nombre: 'Shakira', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/b/b0/Shakira_2017.jpg' },
-    { nombre: 'Freddie Mercury', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/9f/Freddie_Mercury_1984.jpg' },
-    { nombre: 'Duki', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Duki_2019.jpg' },
-    { nombre: 'Emilia Mernes', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/32/Emilia_Mernes.jpg' },
-    { nombre: 'Taylor Swift', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Taylor_Swift_2_-_2019.jpg' },
-    { nombre: 'Ed Sheeran', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Ed_Sheeran_2019.jpg' },
-    { nombre: 'Ariana Grande', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Ariana_Grande_2019.jpg' },
-    { nombre: 'Bad Bunny', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Bad_Bunny_2022.jpg' },
-    { nombre: 'Billie Eilish', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/7/77/Billie_Eilish_2022.jpg' },
-    { nombre: 'The Weeknd', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/8/83/The_Weeknd_2018.jpg' },
-    { nombre: 'Selena Gomez', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/57/Selena_Gomez_2019.jpg' },
-    { nombre: 'Dua Lipa', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/62/Dua_Lipa_2020.jpg' },
-    { nombre: 'Justin Bieber', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Justin_Bieber_2015.jpg' },
-    { nombre: 'Lady Gaga', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Lady_Gaga_2019.jpg' },
-    { nombre: 'Rihanna', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Rihanna_Fenty_2018.jpg' },
-    { nombre: 'Katy Perry', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Katy_Perry_2013.jpg' },
-    { nombre: 'Michael Jackson', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Michael_Jackson_in_1988.jpg' },
-    { nombre: 'Elvis Presley', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Elvis_Presley_Jailhouse_Rock.jpg' },
-    { nombre: 'Whitney Houston', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Whitney_Houston_Welcome_Home_Heroes_1_cropped.jpg' },
-    { nombre: 'Adele', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Adele_2016.jpg' },
-    { nombre: 'Beyoncé', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/94/Beyonce_2019.jpg' },
-    { nombre: 'Bruno Mars', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Bruno_Mars%2C_Las_Vegas_2010.jpg' },
-    { nombre: 'Mick Jagger', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/1/13/Mick_Jagger_Deauville_2014.jpg' },
-    { nombre: 'Bob Marley', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Bob-Marley.jpg' },
-    { nombre: 'Frank Sinatra', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/57/Frank_Sinatra_1957.jpg' },
-    { nombre: 'Luis Miguel', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Luis_Miguel_2008.jpg' },
-    { nombre: 'Charly García', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Charly_Garcia_2009.jpg' },
-    { nombre: 'Gustavo Cerati', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Gustavo_Cerati_2007.jpg' },
-    { nombre: 'Vicentico', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Vicentico_2012.jpg' },
-    { nombre: 'Fito Páez', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Fito_Paez.jpg' },
-    { nombre: 'Andrés Calamaro', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Andres_Calamaro_2009.jpg' },
-    { nombre: 'Soda Stereo', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Soda_Stereo.jpg' },
-    { nombre: 'Trueno', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/f/f0/Trueno_2020.jpg' },
-    { nombre: 'Nicki Nicole', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Nicki_Nicole_2020.jpg' },
-    { nombre: 'Maria Becerra', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Maria_Becerra_2021.jpg' },
-    { nombre: 'Tini Stoessel', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Tini_Stoessel_2019.jpg' },
-    { nombre: 'Nathy Peluso', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/67/Nathy_Peluso_2020.jpg' },
-    { nombre: 'Lali Espósito', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/1/12/Lali_Esposito_2018.jpg' },
-    { nombre: 'Green Day', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Green_Day_2013.jpg' },
-    { nombre: 'Guns N\' Roses', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Guns_n_Roses_2006.jpg' },
-    { nombre: 'Red Hot Chili Peppers', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Red_Hot_Chili_Peppers_2016.jpg' },
-    { nombre: 'Dillom', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Dillom_2020.jpg' },
-    { nombre: 'Cazzu', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/0/0d/Cazzu_2021.jpg' },
-    { nombre: 'Chayanne', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Chayanne_2012.jpg' },
-    { nombre: 'Paco Amoroso', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Paco_Amoroso_2022.jpg' },
-    { nombre: 'Catriel', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Catriel_2021.jpg' },
-    { nombre: 'Bizarrap', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/6/65/Bizarrap_2022.jpg' },
-    { nombre: 'Quevedo', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Quevedo_2022.jpg' },
-    { nombre: 'Agus Padilla', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Agus_Padilla_2021.jpg' },
-    { nombre: 'Miranda!', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/9/97/Miranda_2014.jpg' },
-    { nombre: 'Daddy Yankee', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Daddy_Yankee_2015.jpg' },
-    { nombre: 'Don Omar', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/7/71/Don_Omar_2011.jpg' },
-    { nombre: 'Wisin', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Wisin_2013.jpg' },
-    { nombre: 'Yandel', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Yandel_2012.jpg' },
-    { nombre: 'Zion', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Zion_2013.jpg' },
-    { nombre: 'Lennox', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/e/e5/Lennox_2013.jpg' },
-    { nombre: 'Ivy Queen', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/Ivy_Queen_2010.jpg' },
-    { nombre: 'Nicky Jam', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Nicky_Jam_2013.jpg' },
-    { nombre: 'J Balvin', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/3/3d/J_Balvin_2018.jpg' },
-    { nombre: 'Maluma', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/56/Maluma_2017.jpg' },
-    { nombre: 'Ozuna', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Ozuna_2018.jpg' },
-    { nombre: 'Anuel AA', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/29/Anuel_AA_2019.jpg' },
-    { nombre: 'Karol G', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Karol_G_2019.jpg' },
-    { nombre: 'Sech', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Sech_2019.jpg' },
-    { nombre: 'Feid', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Feid_2019.jpg' },
-    { nombre: 'Bhavi', categoria: 'cantantes', imagen: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Bhavi_2019.jpg' },
+    { nombre: 'Shakira', categoria: 'cantantes', imagen: '/public/assets/img/Shakira.png' },
+    { nombre: 'Freddie Mercury', categoria: 'cantantes', imagen: '/public/assets/img/Freddie_Mercury.jpg' },
+    { nombre: 'Duki', categoria: 'cantantes', imagen: '/public/assets/img/Duki.jpg' },
+    { nombre: 'Emilia Mernes', categoria: 'cantantes', imagen: '/public/assets/img/Emilia_Mernes.png' },
+    { nombre: 'Taylor Swift', categoria: 'cantantes', imagen: '/public/assets/img/Taylor_Swift.png' },
+    { nombre: 'Ed Sheeran', categoria: 'cantantes', imagen: '/public/assets/img/Ed_Sheeran.jpg' },
+    { nombre: 'Ariana Grande', categoria: 'cantantes', imagen: '/public/assets/img/Ariana_Grande.jpeg' },
+    { nombre: 'Bad Bunny', categoria: 'cantantes', imagen: '/public/assets/img/Bad_Bunny.jpg' },
+    { nombre: 'Billie Eilish', categoria: 'cantantes', imagen: '/public/assets/img/Billie_Eilish.jpeg' },
+    { nombre: 'The Weeknd', categoria: 'cantantes', imagen: '/public/assets/img/The_Weeknd.jpg' },
+    { nombre: 'Selena Gomez', categoria: 'cantantes', imagen: '/public/assets/img/Selena_Gomez.png' },
+    { nombre: 'Dua Lipa', categoria: 'cantantes', imagen: '/public/assets/img/Dua_Lipa.jpeg' },
+    { nombre: 'Justin Bieber', categoria: 'cantantes', imagen: '/public/assets/img/Justin_Bieber.jpg' },
+    { nombre: 'Lady Gaga', categoria: 'cantantes', imagen: '/public/assets/img/Lady_Gaga.jpg' },
+    { nombre: 'Rihanna', categoria: 'cantantes', imagen: '/public/assets/img/Rihanna.png' },
+    { nombre: 'Katy Perry', categoria: 'cantantes', imagen: '/public/assets/img/Katy_Perry.jpg' },
+    { nombre: 'Michael Jackson', categoria: 'cantantes', imagen: '/public/assets/img/Michael_Jackson.jpg' },
+    { nombre: 'Elvis Presley', categoria: 'cantantes', imagen: '/public/assets/img/Elvis_Presley.jpg' },
+    { nombre: 'Whitney Houston', categoria: 'cantantes', imagen: '/public/assets/img/Whitney_Houston.png' },
+    { nombre: 'Adele', categoria: 'cantantes', imagen: '/public/assets/img/Adele.jpg' },
+    { nombre: 'Beyoncé', categoria: 'cantantes', imagen: '/public/assets/img/Beyonce.jpg' },
+    { nombre: 'Bruno Mars', categoria: 'cantantes', imagen: '/public/assets/img/Bruno_Mars.jpg' },
+    { nombre: 'Bob Marley', categoria: 'cantantes', imagen: '/public/assets/img/Bob_Marley.jpg' },
+    { nombre: 'Luis Miguel', categoria: 'cantantes', imagen: '/public/assets/img/Luis_Miguel.jpg' },
+    { nombre: 'Charly García', categoria: 'cantantes', imagen: '/public/assets/img/Charly_Garcia.jpeg' },
+    { nombre: 'Gustavo Cerati', categoria: 'cantantes', imagen: '/public/assets/img/Gustavo_Cerati.jpg' },
+    { nombre: 'Andrés Calamaro', categoria: 'cantantes', imagen: '/public/assets/img/Andres_Calamaro.jpg' },
+    { nombre: 'Soda Stereo', categoria: 'cantantes', imagen: '/public/assets/img/Soda_Stereo.png' },
+    { nombre: 'Trueno', categoria: 'cantantes', imagen: '/public/assets/img/Trueno.jpg' },
+    { nombre: 'Nicki Nicole', categoria: 'cantantes', imagen: '/public/assets/img/Nicki_Nicole.jpeg' },
+    { nombre: 'Maria Becerra', categoria: 'cantantes', imagen: '/public/assets/img/Maria_Becerra.jpeg' },
+    { nombre: 'Tini Stoessel', categoria: 'cantantes', imagen: '/public/assets/img/Tini_Stoessel.jpeg' },
+    { nombre: 'Nathy Peluso', categoria: 'cantantes', imagen: '/public/assets/img/Nathy_Peluso.jpeg' },
+    { nombre: 'Lali Espósito', categoria: 'cantantes', imagen: '/public/assets/img/Lali_Esposito.jpeg' },
+    { nombre: 'Green Day', categoria: 'cantantes', imagen: '/public/assets/img/Green_Day.jpg' },
+    { nombre: 'Guns N\' Roses', categoria: 'cantantes', imagen: '/public/assets/img/Guns_N_Roses.jpg' },
+    { nombre: 'Red Hot Chili Peppers', categoria: 'cantantes', imagen: '/public/assets/img/Red_Hot_Chili_Peppers.png' },
+    { nombre: 'Dillom', categoria: 'cantantes', imagen: '/public/assets/img/Dillom.jpg' },
+    { nombre: 'Cazzu', categoria: 'cantantes', imagen: '/public/assets/img/Cazzu.jpg' },
+    { nombre: 'Chayanne', categoria: 'cantantes', imagen: '/public/assets/img/Chayanne.jpg' },
+    { nombre: 'Paco Amoroso', categoria: 'cantantes', imagen: '/public/assets/img/Paco_Amoroso.jpg' },
+    { nombre: 'Catriel', categoria: 'cantantes', imagen: '/public/assets/img/Catriel.jpg' },
+    { nombre: 'Bizarrap', categoria: 'cantantes', imagen: '/public/assets/img/Bizarrap.jpg' },
+    { nombre: 'Quevedo', categoria: 'cantantes', imagen: '/public/assets/img/Quevedo.jpg' },
+    { nombre: 'Agus Padilla', categoria: 'cantantes', imagen: '/public/assets/img/Agus_Padilla.jpeg' },
+    { nombre: 'Miranda!', categoria: 'cantantes', imagen: '/public/assets/img/Miranda.jpg' },
+    { nombre: 'Daddy Yankee', categoria: 'cantantes', imagen: '/public/assets/img/Daddy_Yankee.jpeg' },
+    { nombre: 'Don Omar', categoria: 'cantantes', imagen: '/public/assets/img/Don_Omar.jpeg' },
+    { nombre: 'Wisin', categoria: 'cantantes', imagen: '/public/assets/img/Wisin.jpg' },
+    { nombre: 'Yandel', categoria: 'cantantes', imagen: '/public/assets/img/Yandel.jpg' },
+    { nombre: 'Nicky Jam', categoria: 'cantantes', imagen: '/public/assets/img/Nicky_Jam.jpg' },
+    { nombre: 'J Balvin', categoria: 'cantantes', imagen: '/public/assets/img/J_Balvin.jpg' },
+    { nombre: 'Maluma', categoria: 'cantantes', imagen: '/public/assets/img/Maluma.jpg' },
+    { nombre: 'Ozuna', categoria: 'cantantes', imagen: '/public/assets/img/Ozuna.jpeg' },
+    { nombre: 'Anuel AA', categoria: 'cantantes', imagen: '/public/assets/img/Anuel_AA.jpg' },
+    { nombre: 'Karol G', categoria: 'cantantes', imagen: '/public/assets/img/Karol_G.jpg' },
+    { nombre: 'Sech', categoria: 'cantantes', imagen: '/public/assets/img/Sech.jpeg' },
+    { nombre: 'Feid', categoria: 'cantantes', imagen: '/public/assets/img/Feid.jpeg' },
+    { nombre: 'Bhavi', categoria: 'cantantes', imagen: '/public/assets/img/Bhavi.jpg' },
 
+    // Random Famosos
+    { nombre: 'Ricardo Fort', categoria: 'Random', imagen: '/public/assets/img/Ricardo_Fort.jpg' },
+    { nombre: 'Moria Casán', categoria: 'Random', imagen: '/public/assets/img/Moria_Casan.jpg' },
+    { nombre: 'China Suárez', categoria: 'Random', imagen: '/public/assets/img/China_Suarez.jpg' },
+    { nombre: 'Guillermo Francella', categoria: 'Random', imagen: '/public/assets/img/Guillermo_Francella.jpg' },
+    { nombre: 'Guido Kaczka', categoria: 'Random', imagen: '/public/assets/img/Guido_Kaczka.jpeg' },
+    { nombre: 'Pampita', categoria: 'Random', imagen: '/public/assets/img/Pampita.jpg' },
+    { nombre: 'Wanda Nara', categoria: 'Random', imagen: '/public/assets/img/Wanda_Nara.jpeg' },
+    { nombre: 'Marcelo Tinelli', categoria: 'Random', imagen: '/public/assets/img/Marcelo_Tinelli.jpeg' },
+    { nombre: 'Susana Giménez', categoria: 'Random', imagen: '/public/assets/img/Susana_Gimenez.jpeg' },
+    { nombre: 'Mirtha Legrand', categoria: 'Random', imagen: '/public/assets/img/Mirtha_Legrand.jpeg' },
+    { nombre: 'Mauricio Macri', categoria: 'Random', imagen: '/public/assets/img/Mauricio_Macri.jpg' },
+    { nombre: 'Cristina Kirchner', categoria: 'Random', imagen: '/public/assets/img/Cristina_Kirchner.jpg' },
+    { nombre: 'Javier Milei', categoria: 'Random', imagen: '/public/assets/img/Javier_Milei.jpeg' },
+    { nombre: 'Alberto Fernández', categoria: 'Random', imagen: '/public/assets/img/Alberto_Fernandez.jpg' },
+    { nombre: 'Carlos Menem', categoria: 'Random', imagen: '/public/assets/img/Carlos_Menem.jpg' },
+    { nombre: 'Ernesto Che Guevara', categoria: 'Random', imagen: '/public/assets/img/Che_Guevara.jpg' },
+    { nombre: 'Papa Francisco', categoria: 'Random', imagen: '/public/assets/img/Papa_Francisco.jpg' },
+    { nombre: 'Donald Trump', categoria: 'Random', imagen: 'Donald_Trump.jpg' },
+    { nombre: 'Joe Biden', categoria: 'Random', imagen: 'Joe_Biden.jpg' },
+    { nombre: 'Fidel Castro', categoria: 'Random', imagen: 'Fidel_Castro.jpg' },
+    { nombre: 'Stephen Hawking', categoria: 'Random', imagen: 'Stephen_Hawking.jpg' },
+    { nombre: 'Albert Einstein', categoria: 'Random', imagen: 'Albert_Einstein.jpg' },
+    { nombre: 'Adolf Hitler', categoria: 'Random', imagen: 'Adolf_Hitler.jpg' },
+    { nombre: 'Leonardo da Vinci', categoria: 'Random', imagen: 'Leonardo_da_Vinci.jpeg' },
+    { nombre: 'Marilyn Monroe', categoria: 'Random', imagen: 'Marilyn_Monroe.jpg' },
+    { nombre: 'Michael Jackson', categoria: 'Random', imagen: 'Michael_Jackson.jpg' },
+    { nombre: 'Elvis Presley', categoria: 'Random', imagen: 'Elvis_Presley.jpg' },
+    { nombre: 'Cleopatra', categoria: 'Random', imagen: 'Cleopatra.jpeg' },
+    { nombre: 'Julio César', categoria: 'Random', imagen: 'Julio_Cesar.jpeg' },
+    { nombre: 'Spider-Man', categoria: 'Random', imagen: 'Spider_Man.jpg' },
+    { nombre: 'Goku', categoria: 'Random', imagen: 'Goku.jpg' },
+    { nombre: 'Vegeta', categoria: 'Random', imagen: 'Vegeta.jpg' },
+    { nombre: 'Batman', categoria: 'Random', imagen: 'Batman.jpeg' },
+    { nombre: 'Yoda', categoria: 'Random', imagen: 'Yoda.png' },
+    { nombre: 'Terminator', categoria: 'Random', imagen: 'Terminator.jpg' },
+    { nombre: 'Rambo', categoria: 'Random', imagen: 'Rambo.jpg' },
+    { nombre: 'Voldemort', categoria: 'Random', imagen: 'Voldemort.jpg' },
+    { nombre: 'Shrek', categoria: 'Random', imagen: 'Shrek.jpeg' },
+    { nombre: 'Mario Bros', categoria: 'Random', imagen: 'Mario_Bros.jpg' },
+    { nombre: 'Pikachu', categoria: 'Random', imagen: 'Pikachu.jpg' },
+    { nombre: 'Deadpool', categoria: 'Random', imagen: 'Deadpool.jpg' },
+    { nombre: 'Sub-Zero', categoria: 'Random', imagen: 'Sub_Zero.jpeg' },
+    { nombre: 'Scorpion', categoria: 'Random', imagen: 'Scorpion.jpg' },
+    { nombre: 'Jack Sparrow', categoria: 'Random', imagen: 'Jack_Sparrow.jpeg' },
+    { nombre: 'Darth Vader', categoria: 'Random', imagen: 'Darth_Vader.jpg' },
+    { nombre: 'Harry Potter', categoria: 'Random', imagen: 'Harry_Potter.jpg' },
+    { nombre: 'Iron Man', categoria: 'Random', imagen: 'Iron_Man.jpg' },
+    { nombre: 'Homero Simpson', categoria: 'Random', imagen: 'Homero_Simpson.jpg' },
+    { nombre: 'Buzz Lightyear', categoria: 'Random', imagen: 'Buzz_Lightyear.jpg' },
+    { nombre: 'James Bond', categoria: 'Random', imagen: 'James_Bond.jpeg' },
+    { nombre: 'Godzilla', categoria: 'Random', imagen: 'Godzilla.jpeg' },
+    { nombre: 'Sherlock Holmes', categoria: 'Random', imagen: 'Sherlock_Holmes.jpg' },
+    { nombre: 'Chucky', categoria: 'Random', imagen: 'Chucky.jpg' },
+    { nombre: 'Optimus Prime', categoria: 'Random', imagen: 'Optimus_Prime.jpg' },
 
     // HISTORICOS
     { nombre: 'Napoleon Bonaparte', categoria: 'historicos', imagen: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Napoleon_Bonaparte_by_Jacques-Louis_David.jpg' },
@@ -506,7 +630,7 @@ const gameState = {
   cantidadJugadores: 3,
   cantidadImpostores: 1,
   categoriasSeleccionadas: [
-    'futbol', 'cantantes', 'historicos', 'television',
+    'futbol', 'cantantes', 'Random', 'historicos', 'television',
     'politica', 'deportes', 'cine', 'ciencia',
     'videojuegos', 'literatura', 'influencer'
   ],
@@ -532,7 +656,7 @@ const startButton = document.querySelector('.start-button');
 const showRoleButton = document.querySelector('.game-card:nth-of-type(2) .action-button:nth-of-type(1)');
 const nextPlayerButton = document.querySelector('.game-card:nth-of-type(2) .action-button:nth-of-type(2)');
 const restartButton = document.querySelector('.game-card:nth-of-type(3) .action-button');
-
+const multiplayerBtn = document.getElementById('multiplayer-btn'); 
 // -- FUNCIONES DE LÓGICA DEL JUEGO --
 
 // Alterna una categoría entre seleccionada y no seleccionada
@@ -629,21 +753,38 @@ function mostrarSiguienteTurno() {
 // -- FUNCIONES DE INTERACCIÓN CON LA UI --
 
 // Función principal para renderizar la pantalla correcta
+// Función principal para renderizar la pantalla correcta
 function render() {
-  if (!gameState.juegoIniciado && !gameState.juegoFinalizado) {
-    configCard.style.display = 'block';
-    turnCard.style.display = 'none';
-    finalCard.style.display = 'none';
-  } else if (gameState.juegoIniciado && !gameState.juegoFinalizado) {
-    configCard.style.display = 'none';
-    turnCard.style.display = 'block';
-    finalCard.style.display = 'none';
-    renderTurno();
-  } else if (gameState.juegoFinalizado) {
-    configCard.style.display = 'none';
-    turnCard.style.display = 'none';
-    finalCard.style.display = 'block';
-  }
+    // 1. Manejo de la configuración inicial (antes de empezar el juego)
+    if (!gameState.juegoIniciado && !gameState.juegoFinalizado) {
+        configCard.style.display = 'block';
+        turnCard.style.display = 'none';
+        finalCard.style.display = 'none';
+        
+        // MOSTRAR: El botón de multiplayer SÍ es visible aquí.
+        if (multiplayerBtn) multiplayerBtn.style.display = 'block';
+
+    // 2. Manejo de la partida en curso
+    } else if (gameState.juegoIniciado && !gameState.juegoFinalizado) {
+        configCard.style.display = 'none';
+        turnCard.style.display = 'block';
+        finalCard.style.display = 'none';
+        
+        // OCULTAR: El botón de multiplayer se oculta al iniciar la partida.
+        if (multiplayerBtn) multiplayerBtn.style.display = 'none';
+
+        renderTurno();
+        
+    // 3. Manejo del juego finalizado
+    } else if (gameState.juegoFinalizado) {
+        configCard.style.display = 'none';
+        turnCard.style.display = 'none';
+        finalCard.style.display = 'block';
+        
+        // MOSTRAR: El botón de multiplayer puede volver a ser visible en la pantalla final
+        // (o puedes mantenerlo oculto si quieres que solo se vea al reiniciar).
+        if (multiplayerBtn) multiplayerBtn.style.display = 'block'; 
+    }
 }
 
 // Renderiza la pantalla de "tu turno"
@@ -718,15 +859,18 @@ function siguienteJugador() {
 }
 
 function reiniciarJuego() {
-  gameState.juegoIniciado = false;
-  gameState.juegoFinalizado = false;
-  gameState.turnoActual = 0;
-  gameState.jugadores = [];
-  gameState.jugadorActual = null;
-  gameState.cantidadJugadores = gameState.ultimaCantidadJugadores;
-  gameState.cantidadImpostores = gameState.ultimaCantidadImpostores;
-  gameState.mostrarRol = false;
-  render();
+  gameState.juegoIniciado = false;
+  gameState.juegoFinalizado = false;
+  gameState.turnoActual = 0;
+  gameState.jugadores = [];
+  gameState.jugadorActual = null;
+  gameState.cantidadJugadores = gameState.ultimaCantidadJugadores;
+  gameState.cantidadImpostores = gameState.ultimaCantidadImpostores;
+  gameState.mostrarRol = false;
+  
+  // La llamada a render() aquí hará que el botón de multiplayer
+  // se muestre de nuevo (ver lógica en la función render).
+  render();
 }
 
 function mostrarRol() {
