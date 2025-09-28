@@ -23,7 +23,7 @@ const gameState = {
   jugadorId: null,
   cantidadJugadores: 20,
   cantidadImpostores: 1,
-  categoriasSeleccionadas: ['futbol','cantantes','historicos','television','politica','deportes','cine','ciencia','videojuegos','literatura','influencer'],
+  categoriasSeleccionadas: ['futbol','cantantes','Random','historicos','television','politica','deportes','cine','ciencia','videojuegos','literatura','influencer'],
   jugadores: [],
   juegoIniciado: false,
   juegoFinalizado: false,
