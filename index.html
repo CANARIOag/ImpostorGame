@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juego de Impostores</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/public/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Firebase SDKs -->
@@ -81,20 +81,23 @@
 
       <!-- Pantalla Final -->
       <div id="final-card" class="game-card fade-in" style="display: none;">
-        <div class="card-header">
-          <h2 class="ion-text-center card-title">Juego Finalizado</h2>
-        </div>
-        <div class="card-content">
-          <p class="final-text">Todos los jugadores han visto su rol.</p>
-          <button id="reiniciar-btn" class="action-button">Reiniciar Juego</button>
-        </div>
+          <div class="card-header">
+            <h2 class="ion-text-center card-title">Juego Finalizado</h2>
+          </div>
+          <div class="card-content">
+            <p class="final-text">Todos los jugadores han visto su rol.</p>
+            
+            <h3 class="final-message"></h3> 
+            
+            <button id="reiniciar-btn" class="action-button">Reiniciar Juego</button>
+          </div>
       </div>
     </div>
   </main>
   
 
   <!-- Script principal del juego -->
-  <script src="scripts.js"></script>
+  <script src="/public/scripts.js"></script>
 
   <!-- Script opcional para verificar que Firebase carga correctamente -->
   <script>
@@ -109,5 +112,7 @@
   </script>
 </body>
 </html>
+
+
 
 
