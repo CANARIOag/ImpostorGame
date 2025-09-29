@@ -1,219 +1,361 @@
+/* =================================================================== */
 /* --- RESET Y BASE --- */
+/* =================================================================== */
 body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  font-family: 'Poppins', sans-serif;
-  background: #0a0a0f;
-  color: #fff;
-  overflow-x: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 /* --- CONTENEDOR CENTRAL --- */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  max-width: 500px;
-  padding: 20px;
-  margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    margin-top: 30px;
 }
 
 /* --- TARJETAS --- */
 .game-card {
-  width: 100%;
-  background: rgba(25, 25, 35, 0.95);
-  border-radius: 25px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(80,250,123,0.2);
-  backdrop-filter: blur(10px);
-  padding: 25px;
-  margin-bottom: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(80,250,123,0.4);
+    width: 100%;
+    background: rgba(25, 25, 35, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 15px rgba(80,250,123,0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(80,250,123,0.4);
 }
 
-.game-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 30px rgba(80,250,123,0.5);
+.game-card:hover:not(.jugador-card) {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 30px rgba(80,250,123,0.5);
 }
 
 /* --- TITULOS --- */
 h2, h3 {
-  font-weight: 800;
-  text-align: center;
+    font-weight: 800;
+    text-align: center;
 }
 
 h2 {
-  font-size: 28px;
-  color: #50fa7b;
-  text-shadow: 0 0 15px rgba(80,250,123,0.5);
-  margin-bottom: 20px;
+    font-size: 28px;
+    color: #50fa7b;
+    text-shadow: 0 0 15px rgba(80,250,123,0.5);
+    margin-bottom: 20px;
 }
 
 h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 /* --- INPUTS --- */
 input[type="number"], input[type="text"] {
-  width: 80px;
-  padding: 10px;
-  border-radius: 15px;
-  border: none;
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  margin-bottom: 20px;
+    width: 80px;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 input[type="number"]:focus, input[type="text"]:focus {
-  outline: none;
-  box-shadow: 0 0 20px rgba(80,250,123,0.5);
+    outline: none;
+    box-shadow: 0 0 20px rgba(80,250,123,0.5);
 }
 
 /* --- CHIPS DE CATEGORÍA --- */
 .category-chips {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .category-chips span {
-  padding: 12px 25px;
-  border-radius: 25px;
-  background: rgba(255,255,255,0.05);
-  color: #ccc;
-  font-weight: 600;
-  cursor: pointer;
-  text-transform: capitalize;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 25px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.05);
+    color: #ccc;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .category-chips span.secondary {
-  background: #50fa7b;
-  color: #111;
-  border-color: #50fa7b;
-  box-shadow: 0 0 8px #50fa7b, 0 0 15px rgba(80,250,123,0.4);
-  transform: scale(1.05);
+    background: #50fa7b;
+    color: #111;
+    border-color: #50fa7b;
+    box-shadow: 0 0 8px #50fa7b, 0 0 15px rgba(80,250,123,0.4);
+    transform: scale(1.05);
 }
 
 .category-chips span:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 12px #50fa7b, 0 0 20px rgba(80,250,123,0.5);
+    transform: scale(1.1);
+    box-shadow: 0 0 12px #50fa7b, 0 0 20px rgba(80,250,123,0.5);
 }
 
 /* --- BOTONES --- */
 .start-button, .action-button, .host-button, .join-button, .join-room-button {
-  width: 100%;
-  padding: 15px 0;
-  border-radius: 20px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  background: linear-gradient(90deg, #50fa7b, #8be9fd);
-  color: #111;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-  transition: all 0.3s ease;
-  margin-top: 10px;
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    background: linear-gradient(90deg, #50fa7b, #8be9fd);
+    color: #111;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 .start-button:hover, .action-button:hover, .host-button:hover, .join-button:hover, .join-room-button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 20px rgba(80,250,123,0.6);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 20px rgba(80,250,123,0.6);
 }
 
-.glow-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.glow-effect::before {
-  content: '';
-  position: absolute;
-  width: 300%;
-  height: 300%;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  opacity: 0;
-  transition: all 0.4s ease;
-}
-
-.glow-effect:hover::before {
-  opacity: 1;
-  animation: glow 1.2s infinite;
-}
-
+/* --- EFECTOS VISUALES --- */
 @keyframes glow {
-  0%,100% { box-shadow: 0 0 5px #50fa7b,0 0 10px #8be9fd,0 0 20px #50fa7b; }
-  50% { box-shadow: 0 0 10px #50fa7b,0 0 20px #8be9fd,0 0 30px #50fa7b; }
+    0%,100% { box-shadow: 0 0 5px #50fa7b,0 0 10px #8be9fd,0 0 20px #50fa7b; }
+    50% { box-shadow: 0 0 10px #50fa7b,0 0 20px #8be9fd,0 0 30px #50fa7b; }
+}
+
+@keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.9; }
 }
 
 /* --- PANTALLA SEPARADOR --- */
 .pantalla-separador {
-  width: 100%;
-  height: 200px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.03);
-  box-shadow: inset 0 0 10px rgba(80,250,123,0.2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  color: #bbb;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  text-align: center;
-  animation: pulse 1.5s infinite;
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    box-shadow: inset 0 0 10px rgba(80,250,123,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #bbb;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-align: center;
+    animation: pulse 1.5s infinite;
 }
-
-@keyframes pulse {
-  0%,100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.02); opacity: 0.9; }
-}
-
-/* --- IMÁGENES Y ROL --- */
-.rol-container img.personaje-imagen {
-  width: 220px;
-  height: 220px;
-  border-radius: 20px;
-  object-fit: cover;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-  animation: floatImage 3s ease-in-out infinite;
-}
-
-@keyframes floatImage {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.rol-title.inocente { color: #50fa7b; }
-.rol-title.impostor { color: #ff5555; font-weight:bold; }
 
 /* --- ANIMACIONES GENERALES --- */
-.fade-in { animation: fadeIn 0.8s ease-in-out forwards; }
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 .animated-pop { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 @keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* =================================================================== */
+/* --- ESTILOS SALA DE INTERACCIÓN (Game Room) --- */
+/* =================================================================== */
+
+.game-card .jugador-info {
+    /* Este elemento se mantiene oculto en la vista de sala por el JS */
+    display: none !important;
+}
+
+.game-room-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.jugador-card {
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    width: 140px; 
+    background: rgba(40, 40, 50, 0.9);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.jugador-nombre {
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Estilos de las imágenes para todos los jugadores */
+.jugador-rol-info img {
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 5px auto;
+    border: 3px solid;
+    transition: all 0.3s ease;
+}
+
+/* ------------------------------------------------------------- */
+/* 1. JUGADOR ACTUAL (TARJETA GRANDE Y REVELADA) */
+/* ------------------------------------------------------------- */
+
+/* Seleccionamos la primera tarjeta (que el JS garantiza que es la del jugador actual) */
+.jugador-card:first-child { 
+    width: 250px; 
+    padding: 25px;
+    margin-bottom: 20px;
+    border-color: #50fa7b; 
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(80,250,123,0.7);
+}
+
+.jugador-card:first-child .jugador-nombre {
+    font-size: 1.4em;
+    color: #50fa7b;
+}
+
+.jugador-card:first-child .jugador-rol-info img {
+    width: 120px; 
+    height: 120px;
+}
+
+/* Animación al hacer click en la tarjeta principal (zoom) */
+.jugador-card.zoom-active {
+    transform: scale(1.15) !important; 
+    z-index: 10; 
+    position: relative;
+    box-shadow: 0 20px 50px rgba(80,250,123,1.0), 0 0 50px rgba(80,250,123,0.8);
+}
+
+/* ------------------------------------------------------------- */
+/* 2. OTROS JUGADORES (TARJETAS PEQUEÑAS Y OCULTAS) */
+/* ------------------------------------------------------------- */
+
+.jugador-card:not(:first-child):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7), 0 0 10px #8be9fd;
+}
+
+.jugador-rol-info.oculto {
+    background: #555; 
+    border-radius: 10px;
+    padding: 5px 0;
+}
+
+.jugador-rol-info.oculto img {
+    width: 70px;
+    height: 70px;
+    opacity: 0.6;
+    background-color: #333;
+    border: none;
+}
+
+.jugador-rol-info.oculto .rol-title {
+    color: #ccc;
+}
+
+
+/* ------------------------------------------------------------- */
+/* 3. ROLES Y CLASES DE COLOR */
+/* ------------------------------------------------------------- */
+.jugador-card .impostor img { border-color: #ff5555; }
+.jugador-card .normal img { border-color: #50fa7b; }
+
+.rol-title {
+    margin: 5px 0 0 0;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.rol-title.normal { color: #50fa7b; }
+.rol-title.impostor { color: #ff5555; font-weight:bold; }
+
+
+/* =================================================================== */
+/* --- RESPONSIVE: Adaptación para Móviles --- */
+/* =================================================================== */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    .game-room-container {
+        gap: 10px;
+    }
+
+    /* Tarjeta principal en móvil: ocupa todo el ancho, tamaño más moderado */
+    .jugador-card:first-child { 
+        width: 100%; 
+        padding: 15px;
+        margin-bottom: 15px;
+        transform: scale(1); 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    }
+    
+    .jugador-card:first-child .jugador-rol-info img {
+        width: 90px; 
+        height: 90px;
+    }
+
+    /* Tarjetas de amigos en móvil */
+    .jugador-card {
+        width: 120px; 
+        padding: 10px;
+    }
+    
+    .jugador-rol-info.oculto img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    /* Animación al hacer click en la tarjeta principal (zoom) */
+    .jugador-card.zoom-active {
+        transform: scale(1.15) !important; 
+        z-index: 10; 
+        position: relative;
+        box-shadow: 0 20px 50px rgba(80,250,123,1.0), 0 0 50px rgba(80,250,123,0.8);
+    }
+
+    /* El texto del nombre ya es grande por el estilo de :first-child */
+    .jugador-card:first-child .jugador-nombre {
+        font-size: 1.4em; /* Esto asegura que el nombre es grande */
+        color: #50fa7b;
+    }
+
+    /* Y la imagen ya es grande por el estilo de :first-child */
+    .jugador-card:first-child .jugador-rol-info img {
+        width: 120px; 
+        height: 120px;
+    }
+
+    /* Estilo Adicional para Aumentar el Nombre al Hacer Zoom */
+    .jugador-card.zoom-active .jugador-nombre {
+        font-size: 1.8em !important; 
+    }
 }
