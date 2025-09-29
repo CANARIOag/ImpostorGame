@@ -641,6 +641,7 @@ const personajes = [
     { nombre: 'Fernanfloo', categoria: 'influencer', imagen: 'https://upload.wikimedia.org/wikipedia/commons/2/27/Fernanfloo_2020.jpg' }
 ];
 
+
 // Mapeo para determinar el número máximo de impostores por jugador
 const impostoresMax = new Map([
   [4, 1], [5, 2], [6, 2], [7, 2], [8, 3], [9, 3],
@@ -695,16 +696,39 @@ function toggleCategoria(categoria) {
 
 // Actualiza el número de impostores cuando cambia la cantidad de jugadores
 function onCantidadJugadoresChange() {
-  const valor = parseInt(playersInput.value);
-  gameState.cantidadJugadores = Math.max(3, Math.min(valor, 20));
+    const valor = parseInt(playersInput.value);
+    gameState.cantidadJugadores = Math.max(3, Math.min(valor, 20));
 
-  playersInput.value = gameState.cantidadJugadores;
+    playersInput.value = gameState.cantidadJugadores;
 
-  const maxImpostores = impostoresMax.get(gameState.cantidadJugadores) || 1;
-  gameState.cantidadImpostores = Math.floor(Math.random() * maxImpostores) + 1;
+    const maxImpostores = impostoresMax.get(gameState.cantidadJugadores) || 1;
+    
+    // --- LÓGICA MODIFICADA PARA EL CONTROL DE IMPOSTORES ---
+    if (gameState.cantidadJugadores <= 6) {
+        // En grupos pequeños (3-6 jugadores), FUERZA 1 impostor.
+        gameState.cantidadImpostores = 1;
+    } else {
+        // En grupos más grandes, se mantiene la posibilidad de 1 hasta el máximo.
+        // Opcional: Para asegurar que siempre haya al menos 1, puedes usar Math.max(1, Math.floor(Math.random() * maxImpostores) + 1);
+        gameState.cantidadImpostores = Math.floor(Math.random() * maxImpostores) + 1;
+    }
+    // --------------------------------------------------------
 
-  gameState.ultimaCantidadJugadores = gameState.cantidadJugadores;
-  gameState.ultimaCantidadImpostores = gameState.cantidadImpostores;
+    // Si el número calculado es mayor al máximo permitido, lo ajustamos al máximo
+    gameState.cantidadImpostores = Math.min(gameState.cantidadImpostores, maxImpostores);
+
+    gameState.ultimaCantidadJugadores = gameState.cantidadJugadores;
+    gameState.ultimaCantidadImpostores = gameState.cantidadImpostores;
+}
+
+// Calcula cuántos jugadores son impostores
+function contarImpostores() {
+    // Si la lista de jugadores aún no existe o está vacía, devuelve el valor guardado
+    if (!gameState.jugadores || gameState.jugadores.length === 0) {
+        return gameState.ultimaCantidadImpostores;
+    }
+    // Si el juego está en curso, cuenta los impostores del array de jugadores real
+    return gameState.jugadores.filter(j => j.rol === 'impostor').length;
 }
 
 // Genera la lista de jugadores con sus roles y personajes
@@ -776,7 +800,6 @@ function mostrarSiguienteTurno() {
 // -- FUNCIONES DE INTERACCIÓN CON LA UI --
 
 // Función principal para renderizar la pantalla correcta
-// Función principal para renderizar la pantalla correcta
 function render() {
     // 1. Manejo de la configuración inicial (antes de empezar el juego)
     if (!gameState.juegoIniciado && !gameState.juegoFinalizado) {
@@ -803,9 +826,19 @@ function render() {
         configCard.style.display = 'none';
         turnCard.style.display = 'none';
         finalCard.style.display = 'block';
+
+        // --- LÓGICA MODIFICADA PARA LA PANTALLA FINAL ---
+        const totalImpostores = contarImpostores();
+        const finalMessageElement = finalCard.querySelector('.final-message');
         
-        // MOSTRAR: El botón de multiplayer puede volver a ser visible en la pantalla final
-        // (o puedes mantenerlo oculto si quieres que solo se vea al reiniciar).
+        if (finalMessageElement) {
+            // Muestra el conteo de impostores
+            finalMessageElement.textContent = `En esta partida había ${totalImpostores} impostor${totalImpostores > 1 ? 'es' : ''}.`;
+            finalMessageElement.style.color = 'red';
+        }
+        // ----------------------------------------------------
+
+        // MOSTRAR: El botón de multiplayer puede volver a ser visible
         if (multiplayerBtn) multiplayerBtn.style.display = 'block'; 
     }
 }
@@ -930,6 +963,9 @@ document.addEventListener('DOMContentLoaded', () => {
   updateChipsUI();
   render();
 });
+
+
+
 
 
 
