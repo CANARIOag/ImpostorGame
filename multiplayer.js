@@ -67,7 +67,7 @@ const resultadoVotacionElem = document.getElementById('resultadoVotacion');
 // --- PERSONAJES ---
 const personajes = [
     // FUTBOL
-    { nombre: 'Lionel Messi', categoria: 'futbol', imagen: 'assets/img/Lionel_Messi.jpg' },
+    { nombre: 'Lionel Messi', categoria: 'futbol', imagen: 'assets/img/Messi.jpg' },
     { nombre: 'Cristiano Ronaldo', categoria: 'futbol', imagen: 'assets/img/Cristiano_Ronaldo.jpg' },
     { nombre: 'Neymar Jr', categoria: 'futbol', imagen: 'assets/img/Neymar_Jr.jpeg' },
     { nombre: 'Kylian Mbappé', categoria: 'futbol', imagen: 'assets/img/Kylian_Mbappe.png' },
@@ -1090,5 +1090,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateChipsUI();
   render();
 });
+
 
 
